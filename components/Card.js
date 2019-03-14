@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 export default function Card(props) {
-  console.log(props.cardDetails);
   const [expanded, setExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const {

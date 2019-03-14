@@ -1,10 +1,10 @@
 import React from 'react';
-import events from '../static/mock_events.json';
+// import events from '../static/mock_events.json';
 import Card from '../components/Card';
 
-export default function cardContainer() {
-  const cards = events.map(event => (
-    <Card cardDetails={event} key={event.id} />
+export default function cardContainer(props) {
+  const cards = props.artists.map(artist => (
+    <Card cardDetails={artist} key={artist.id} />
   ));
   return (
     <div className='card-container'>
