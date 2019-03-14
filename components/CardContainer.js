@@ -1,5 +1,4 @@
 import React from 'react';
-// import events from '../static/mock_events.json';
 import Card from '../components/Card';
 
 export default function cardContainer(props) {
