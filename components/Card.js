@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { object } from 'prop-types';
 
-export default function Card(props) {
+const Card = props => {
   const [expanded, setExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const {
@@ -31,7 +32,7 @@ export default function Card(props) {
       onMouseEnter={handleHovering}
       onMouseLeave={handleHovering}
     >
-      <h3 className='artist-name'>{artist ? artist : site}</h3>
+      <h3 className='artist-name'>{artist ? artist : 'Unknown Artist'}</h3>
       {isHovering & !expanded ? (
         <span className='expand-btn' onClick={handleClickExpanded}>
           &or;
@@ -45,19 +46,19 @@ export default function Card(props) {
       )}
 
       {expanded && (
-        <div>
+        <div className='expanded-card'>
           <img src={image} alt='artist image' />
           <p>
-            WEBSITE: <span>{site}</span>
+            WEBSITE: <span>{site ? site : 'Unknown'}</span>
           </p>
           <p>
-            LOCATION:{' '}
+            LOCATION:
             <span>
-              {city}, {state}
+              {city ? city : 'Unknown'}, {state ? state : 'Unknown'}
             </span>
           </p>
           <p>
-            COUNTRY: <span>{country}</span>
+            COUNTRY: <span>{country ? country : 'Unknown'}</span>
           </p>
           <div className='artist-description'>
             <h4>DESCRIPTION: </h4>
@@ -113,7 +114,7 @@ export default function Card(props) {
           }
           .expand-btn {
             position: absolute;
-            bottom: 1rem;
+            bottom: 2rem;
             right: 0.7rem;
             font-size: 3rem;
             height: 3rem;
@@ -125,8 +126,8 @@ export default function Card(props) {
           }
           .unexpand-btn {
             position: absolute;
-            top: 0.5rem;
-            right: 1rem;
+            top: 0.05rem;
+            right: 0.7rem;
             font-size: 3rem;
             height: 3rem;
             cursor: default;
@@ -135,8 +136,18 @@ export default function Card(props) {
             color: lime;
             cursor: pointer;
           }
+
+          .expanded-card {
+            max-width: 80%;
+            margin: auto;
+          }
         `}
       </style>
     </div>
   );
-}
+};
+
+Card.propTypes = {
+  cardDetails: object
+};
+export default Card;

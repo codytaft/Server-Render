@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import Head from '../components/Head';
 import CardContainer from '../components/CardContainer';
 import Search from '../components/Search';
+import Sort from '../components/Sort';
 import events from '../static/mock_events.json';
 
-const Home = () => {
+const Home = props => {
   const [allEvents, setEvents] = useState(events);
 
-  const handleChange = async input => {
+  const handleSearch = input => {
     const filteredEvents = events.filter(event => {
       let stringifiedEvent = JSON.stringify(event).toLowerCase();
       return stringifiedEvent.includes(input.toLowerCase());
     });
     setEvents(filteredEvents);
+  };
+
+  const handleSort = input => {
+    setEvents(input);
   };
 
   return (
@@ -23,7 +28,10 @@ const Home = () => {
         <h1 className='title'>Welcome to the Art House!</h1>
         <p className='description'>Click on the artist to learn more </p>
       </div>
-      <Search onChange={input => handleChange(input)} />
+      <div className='search-form'>
+        <Search onChange={input => handleSearch(input)} />
+      </div>
+      <Sort onChange={input => handleSort(input)} artists={allEvents} />
 
       <CardContainer artists={allEvents} />
       <style jsx global>{`
@@ -39,7 +47,7 @@ const Home = () => {
         }
         body {
           letter-spacing: 2px;
-          font-family: 'Open Sans Condensed', sans-serif;
+          font-family: 'Martel', serif;
           box-sizing: border-box;
           background: rgb(30, 30, 30);
           color: rgba(191, 191, 191);
@@ -47,6 +55,9 @@ const Home = () => {
       `}</style>
 
       <style jsx>{`
+        .search-form {
+          text-align: center;
+        }
         .title {
           margin: 0;
           width: 100%;
@@ -65,5 +76,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;

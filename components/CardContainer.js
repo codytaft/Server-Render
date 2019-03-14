@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from '../components/Card';
+import { array } from 'prop-types';
 
-export default function cardContainer(props) {
+const CardContainer = props => {
   const cards = props.artists.map(artist => (
     <Card cardDetails={artist} key={artist.id} />
   ));
@@ -11,7 +12,7 @@ export default function cardContainer(props) {
       <style>
         {`
         .card-container {
-          margin: 2rem 2rem;
+          margin: 1rem 2rem;
           display: flex;
           flex-direction: row;
           justify-content: space-around;
@@ -21,4 +22,10 @@ export default function cardContainer(props) {
       </style>
     </div>
   );
-}
+};
+
+CardContainer.propTypes = {
+  artists: array
+};
+
+export default CardContainer;
