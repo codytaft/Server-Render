@@ -9,6 +9,19 @@ export default class Sort extends Component {
     };
   }
   componentDidMount() {
+    this.handleSort();
+  }
+
+  handleSortChange = event => {
+    console.log('hi');
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleSort() {
+    console.log('hi');
     const { artists, onChange } = this.props;
     const mapped = artists.map((artist, i) => {
       return {
@@ -19,10 +32,10 @@ export default class Sort extends Component {
 
     mapped.sort((a, b) => {
       if (a.value > b.value) {
-        return 1;
+        return -1;
       }
       if (a.value < b.value) {
-        return -1;
+        return 1;
       }
       return 0;
     });
@@ -32,17 +45,6 @@ export default class Sort extends Component {
     });
 
     return onChange(result);
-  }
-
-  handleSortChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleSort() {
-    console.log('hi');
   }
 
   render() {
@@ -57,6 +59,7 @@ export default class Sort extends Component {
               value='first'
               className='name-btn'
               onChange={this.handleSortChange}
+              checked={this.state.name === 'first'}
             />
             <span>First</span>
             <input
@@ -65,7 +68,7 @@ export default class Sort extends Component {
               value='last'
               className='name-btn'
               onChange={this.handleSortChange}
-              checked
+              checked={this.state.name === 'last'}
             />
             <span>Last</span>
           </section>
@@ -76,7 +79,7 @@ export default class Sort extends Component {
               name='order'
               value='ascending'
               onChange={this.handleSortChange}
-              checked
+              checked={this.state.order === 'ascending'}
             />
             <span>A&rarr;Z</span>
             <input
@@ -84,6 +87,7 @@ export default class Sort extends Component {
               name='order'
               value='descending'
               onChange={this.handleSortChange}
+              checked={this.state.order === 'descending'}
             />
             <span>Z&rarr;A</span>
           </section>
