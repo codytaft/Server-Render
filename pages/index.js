@@ -47,7 +47,7 @@ export default function Home() {
         }
         body {
           letter-spacing: 2px;
-          font-family: 'Open Sans Condensed', sans-serif;
+          font-family: 'Martel', serif;
           box-sizing: border-box;
           background: rgb(30, 30, 30);
           color: rgba(191, 191, 191);
