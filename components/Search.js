@@ -25,15 +25,24 @@ export default class Search extends Component {
           value={this.state.search}
           onChange={this.handleChange}
         />
-        <button>Search</button>
         <style jsx>
           {`
-					.search-form {
-						width: 15rem;
-						margin 1rem auto;
-						display: inline;
-					}
-				`}
+            .search-form {
+              width: auto;
+              display: inline;
+            }
+            input {
+              background: none;
+              border: 1px solid rgb(191, 191, 191);
+              padding: 0.3rem 0.7rem;
+              font-size: 2rem;
+              color: rgb(191, 191, 191);
+              margin-top: 1rem;
+            }
+            input:focus {
+              outline: none;
+            }
+          `}
         </style>
       </form>
     );

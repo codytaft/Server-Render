@@ -11,7 +11,7 @@ export default function cardContainer(props) {
       <style>
         {`
         .card-container {
-          margin: 2rem 2rem;
+          margin: 1rem 2rem;
           display: flex;
           flex-direction: row;
           justify-content: space-around;
