@@ -4,7 +4,7 @@ import CardContainer from '../components/CardContainer';
 import Search from '../components/Search';
 import events from '../static/mock_events.json';
 
-const Home = () => {
+export default function Home() {
   const [allEvents, setEvents] = useState(events);
 
   const handleChange = async input => {
@@ -23,7 +23,9 @@ const Home = () => {
         <h1 className='title'>Welcome to the Art House!</h1>
         <p className='description'>Click on the artist to learn more </p>
       </div>
-      <Search onChange={input => handleChange(input)} />
+      <div className='search-form'>
+        <Search onChange={input => handleChange(input)} />
+      </div>
 
       <CardContainer artists={allEvents} />
       <style jsx global>{`
@@ -47,6 +49,9 @@ const Home = () => {
       `}</style>
 
       <style jsx>{`
+        .search-form {
+          text-align: center;
+        }
         .title {
           margin: 0;
           width: 100%;
@@ -64,6 +69,4 @@ const Home = () => {
       `}</style>
     </div>
   );
-};
-
-export default Home;
+}
