@@ -16,7 +16,7 @@ export default function cardContainer() {
           display: flex;
           flex-direction: row;
           justify-content: space-around;
-          flex-wrap: wrap
+          flex-wrap: wrap;
         }
       `}
       </style>

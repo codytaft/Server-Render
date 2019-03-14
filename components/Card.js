@@ -32,14 +32,14 @@ export default function Card(props) {
       onMouseEnter={handleHovering}
       onMouseLeave={handleHovering}
     >
-      <h3>{artist ? `Name: ${artist}` : `Site: ${site}`}</h3>
+      <h3 className='artist-name'>{artist ? artist : site}</h3>
       {isHovering & !expanded ? (
         <span className='expand-btn' onClick={handleClickExpanded}>
-          +
+          &Delta;
         </span>
       ) : isHovering & expanded ? (
         <span className='unexpand-btn' onClick={handleClickExpanded}>
-          -
+          &uarr;
         </span>
       ) : (
         <div />
@@ -65,13 +65,14 @@ export default function Card(props) {
       <style jsx>
         {`
           .card {
-            width: 15rem;
+            width: 60%;
             margin: 1rem;
             padding: 1rem;
             border: 1px solid #9b9b9b;
             border-radius: 2px;
             position: relative;
             cursor: default;
+            font-size: 1.5rem;
           }
           .card:hover {
             border-color: #067df7;
@@ -79,10 +80,10 @@ export default function Card(props) {
           }
           .expand-btn {
             position: absolute;
-            bottom: 0.7rem;
+            bottom: 1rem;
             right: 0.7rem;
-            font-size: 1.8rem;
-            height: 1.8rem;
+            font-size: 3rem;
+            height: 3rem;
             cursor: default;
           }
           .expand-btn:hover {
@@ -91,10 +92,10 @@ export default function Card(props) {
           }
           .unexpand-btn {
             position: absolute;
-            bottom: 0.7rem;
-            right: 0.7rem;
-            font-size: 1.8rem;
-            height: 1.8rem;
+            top: 0.5rem;
+            right: 1rem;
+            font-size: 3rem;
+            height: 3rem;
             cursor: default;
           }
           .unexpand-btn:hover {
