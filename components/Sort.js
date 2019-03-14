@@ -12,25 +12,56 @@ export default class Sort extends Component {
     this.handleSort();
   }
 
-  handleSortChange = event => {
-    console.log('hi');
+  handleSortSelection = async event => {
     const { name, value } = event.target;
-    this.setState({
+    await this.setState({
       [name]: value
     });
+    this.handleSort();
   };
 
   handleSort() {
-    console.log('hi');
     const { artists, onChange } = this.props;
-    const mapped = artists.map((artist, i) => {
+    let mapped = artists.map((artist, i) => {
       return {
         index: i,
-        value: artist.artist ? artist.artist.split(' ')[1].toLowerCase() : 'zz'
+        value: artist.artist
+          ? artist.artist
+              .split(' ')
+              [this.state.name === 'last' ? 1 : 0].toLowerCase()
+          : 'zz'
       };
     });
 
-    mapped.sort((a, b) => {
+    if (this.state.order === 'ascending') {
+      mapped = this.ascendingSort(mapped);
+    }
+
+    if (this.state.order === 'descending') {
+      mapped = this.descendingSort(mapped);
+    }
+
+    let result = mapped.map(el => {
+      return artists[el.index];
+    });
+
+    return onChange(result);
+  }
+
+  ascendingSort(array) {
+    return array.sort((a, b) => {
+      if (a.value > b.value) {
+        return 1;
+      }
+      if (a.value < b.value) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
+  descendingSort(array) {
+    return array.sort((a, b) => {
       if (a.value > b.value) {
         return -1;
       }
@@ -39,12 +70,6 @@ export default class Sort extends Component {
       }
       return 0;
     });
-
-    let result = mapped.map(el => {
-      return artists[el.index];
-    });
-
-    return onChange(result);
   }
 
   render() {
@@ -58,7 +83,7 @@ export default class Sort extends Component {
               name='name'
               value='first'
               className='name-btn'
-              onChange={this.handleSortChange}
+              onChange={this.handleSortSelection}
               checked={this.state.name === 'first'}
             />
             <span>First</span>
@@ -67,7 +92,7 @@ export default class Sort extends Component {
               name='name'
               value='last'
               className='name-btn'
-              onChange={this.handleSortChange}
+              onChange={this.handleSortSelection}
               checked={this.state.name === 'last'}
             />
             <span>Last</span>
@@ -78,7 +103,7 @@ export default class Sort extends Component {
               type='radio'
               name='order'
               value='ascending'
-              onChange={this.handleSortChange}
+              onChange={this.handleSortSelection}
               checked={this.state.order === 'ascending'}
             />
             <span>A&rarr;Z</span>
@@ -86,7 +111,7 @@ export default class Sort extends Component {
               type='radio'
               name='order'
               value='descending'
-              onChange={this.handleSortChange}
+              onChange={this.handleSortSelection}
               checked={this.state.order === 'descending'}
             />
             <span>Z&rarr;A</span>
