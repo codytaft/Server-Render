@@ -45,19 +45,19 @@ export default function Card(props) {
       )}
 
       {expanded && (
-        <div>
+        <div className='expanded-card'>
           <img src={image} alt='artist image' />
           <p>
-            WEBSITE: <span>{site}</span>
+            WEBSITE: <span>{site ? site : 'Unknown'}</span>
           </p>
           <p>
-            LOCATION:{' '}
+            LOCATION:
             <span>
-              {city}, {state}
+              {city ? city : 'Unknown'}, {state ? state : 'Unknown'}
             </span>
           </p>
           <p>
-            COUNTRY: <span>{country}</span>
+            COUNTRY: <span>{country ? country : 'Unknown'}</span>
           </p>
           <div className='artist-description'>
             <h4>DESCRIPTION: </h4>
@@ -134,6 +134,11 @@ export default function Card(props) {
           .unexpand-btn:hover {
             color: lime;
             cursor: pointer;
+          }
+
+          .expanded-card {
+            max-width: 75%;
+            margin: auto;
           }
         `}
       </style>
