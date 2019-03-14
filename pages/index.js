@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import Head from '../components/Head';
 import CardContainer from '../components/CardContainer';
 import Search from '../components/Search';
+import Sort from '../components/Sort';
 import events from '../static/mock_events.json';
 
 export default function Home() {
   const [allEvents, setEvents] = useState(events);
 
-  const handleChange = async input => {
+  const handleSearch = input => {
     const filteredEvents = events.filter(event => {
       let stringifiedEvent = JSON.stringify(event).toLowerCase();
       return stringifiedEvent.includes(input.toLowerCase());
     });
     setEvents(filteredEvents);
+  };
+
+  const handleSort = input => {
+    setEvents(input);
   };
 
   return (
@@ -24,8 +29,9 @@ export default function Home() {
         <p className='description'>Click on the artist to learn more </p>
       </div>
       <div className='search-form'>
-        <Search onChange={input => handleChange(input)} />
+        <Search onChange={input => handleSearch(input)} />
       </div>
+      <Sort onChange={input => handleSort(input)} artists={allEvents} />
 
       <CardContainer artists={allEvents} />
       <style jsx global>{`
