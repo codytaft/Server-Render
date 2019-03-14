@@ -12,6 +12,7 @@ export default class Sort extends Component {
     this.handleSort();
   }
 
+  // This handles state change from radio buttons
   handleSortSelection = async event => {
     const { name, value } = event.target;
     await this.setState({
@@ -20,6 +21,7 @@ export default class Sort extends Component {
     this.handleSort();
   };
 
+  // Sorts the array
   handleSort() {
     const { artists, onChange } = this.props;
     let mapped = artists.map((artist, i) => {
@@ -48,6 +50,7 @@ export default class Sort extends Component {
     return onChange(result);
   }
 
+  // Sorts A-Z
   ascendingSort(array) {
     return array.sort((a, b) => {
       if (a.value > b.value) {
@@ -59,7 +62,7 @@ export default class Sort extends Component {
       return 0;
     });
   }
-
+  // Sorts Z-A
   descendingSort(array) {
     return array.sort((a, b) => {
       if (a.value > b.value) {
@@ -97,7 +100,6 @@ export default class Sort extends Component {
             />
             <span>Last</span>
           </section>
-          <p>from</p>
           <section className='order-selection'>
             <input
               type='radio'
@@ -163,6 +165,12 @@ export default class Sort extends Component {
               background: rgb(191, 191, 191);
               color: rgb(30, 30, 30);
               outline: none;
+            }
+            .name-selection {
+              margin-botton: 1rem;
+            }
+            .order-selection {
+              margin-top: 1rem;
             }
           `}
         </style>
