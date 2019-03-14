@@ -113,7 +113,7 @@ export default function Card(props) {
           }
           .expand-btn {
             position: absolute;
-            bottom: 1rem;
+            bottom: 2rem;
             right: 0.7rem;
             font-size: 3rem;
             height: 3rem;
@@ -125,8 +125,8 @@ export default function Card(props) {
           }
           .unexpand-btn {
             position: absolute;
-            top: 0.5rem;
-            right: 1rem;
+            top: 0.05rem;
+            right: 0.7rem;
             font-size: 3rem;
             height: 3rem;
             cursor: default;
@@ -137,7 +137,7 @@ export default function Card(props) {
           }
 
           .expanded-card {
-            max-width: 75%;
+            max-width: 80%;
             margin: auto;
           }
         `}
