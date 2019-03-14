@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { object } from 'prop-types';
 
-export default function Card(props) {
+const Card = props => {
   const [expanded, setExpanded] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const {
@@ -144,4 +145,9 @@ export default function Card(props) {
       </style>
     </div>
   );
-}
+};
+
+Card.propTypes = {
+  cardDetails: object
+};
+export default Card;

@@ -5,7 +5,7 @@ import Search from '../components/Search';
 import Sort from '../components/Sort';
 import events from '../static/mock_events.json';
 
-export default function Home() {
+const Home = props => {
   const [allEvents, setEvents] = useState(events);
 
   const handleSearch = input => {
@@ -75,4 +75,5 @@ export default function Home() {
       `}</style>
     </div>
   );
-}
+};
+export default Home;

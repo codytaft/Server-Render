@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
+class Search extends Component {
+  constructor() {
+    super();
     this.state = {
       search: ''
     };
@@ -48,3 +48,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default Search;

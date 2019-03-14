@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { array, func } from 'prop-types';
 
-export default class Sort extends Component {
+class Sort extends Component {
   constructor() {
     super();
     this.state = {
@@ -178,3 +179,10 @@ export default class Sort extends Component {
     );
   }
 }
+
+Sort.propTypes = {
+  artists: array,
+  onChange: func
+};
+
+export default Sort;
