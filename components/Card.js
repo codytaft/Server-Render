@@ -35,31 +35,39 @@ export default function Card(props) {
       <h3 className='artist-name'>{artist ? artist : site}</h3>
       {isHovering & !expanded ? (
         <span className='expand-btn' onClick={handleClickExpanded}>
-          &Delta;
+          &or;
         </span>
       ) : isHovering & expanded ? (
         <span className='unexpand-btn' onClick={handleClickExpanded}>
-          &uarr;
+          &and;
         </span>
       ) : (
         <div />
       )}
-      {/* {expanded && (
-        <span className='unexpand-btn' onClick={handleClickExpanded}>
-          -
-        </span>
-      )} */}
+
       {expanded && (
         <div>
-          <img src={image} />
-          <p>{site}</p>
+          <img src={image} alt='artist image' />
           <p>
-            {city}, {state}
+            WEBSITE: <span>{site}</span>
           </p>
-          <p>{country}</p>
-          <p>{description}</p>
-          <p>{time}</p>
-          <p>{date}</p>
+          <p>
+            LOCATION:{' '}
+            <span>
+              {city}, {state}
+            </span>
+          </p>
+          <p>
+            COUNTRY: <span>{country}</span>
+          </p>
+          <div className='artist-description'>
+            <h4>DESCRIPTION: </h4>
+            <p>{description}</p>
+          </div>
+          <p className='date-time'>
+            TIME: {time}
+            DATE: {date}
+          </p>
         </div>
       )}
       <style jsx>
@@ -77,6 +85,32 @@ export default function Card(props) {
           .card:hover {
             border-color: #067df7;
             color: #067df7;
+          }
+          img {
+            display: block;
+            margin: 2rem auto;
+            width: 7rem;
+          }
+          p {
+            color: rgb(191, 191, 191);
+            margin: 1rem 0;
+          }
+          span {
+            float: right;
+          }
+          .artist-description {
+            text-align: center;
+            margin: 1rem 0;
+            color: rgb(191, 191, 191);
+          }
+          .artist-description p {
+            font-size: 1.3rem;
+            padding: 0 1rem;
+          }
+          .date-time {
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 1rem;
           }
           .expand-btn {
             position: absolute;
