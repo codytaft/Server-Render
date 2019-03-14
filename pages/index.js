@@ -26,7 +26,9 @@ const Home = props => {
 
       <div className='hero'>
         <h1 className='title'>Welcome to the Art House!</h1>
-        <p className='description'>Click on the artist to learn more </p>
+        <p className='description'>
+          Click the arrow on the artist to learn more{' '}
+        </p>
       </div>
       <div className='search-form'>
         <Search onChange={input => handleSearch(input)} />

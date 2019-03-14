@@ -41,6 +41,7 @@ class Search extends Component {
             }
             input:focus {
               outline: none;
+              border: 1px solid #067df7;
             }
           `}
         </style>
