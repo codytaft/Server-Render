@@ -3,10 +3,10 @@ import Head from '../components/Head';
 import CardContainer from '../components/CardContainer';
 import Search from '../components/Search';
 import Sort from '../components/Sort';
-import events from '../static/mock_events.json';
+import fetch from 'isomorphic-unfetch';
 
-const Home = props => {
-  const [allEvents, setEvents] = useState(events);
+const Home = ({ events }) => {
+  const [allEvents, setEvents] = useState([...events]);
 
   const handleSearch = input => {
     const filteredEvents = events.filter(event => {
@@ -77,6 +77,12 @@ const Home = props => {
       `}</style>
     </div>
   );
+};
+
+Home.getInitialProps = async ({ req }) => {
+  const res = await fetch('http://localhost:3000/static/mock_events.json');
+  const json = await res.json();
+  return { events: json };
 };
 
 export default Home;
