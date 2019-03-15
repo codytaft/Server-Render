@@ -32,7 +32,7 @@ const Card = props => {
       onMouseEnter={handleHovering}
       onMouseLeave={handleHovering}
     >
-      <h3 className='artist-name'>{artist ? artist : 'Unknown Artist'}</h3>
+      <h3 className='artist-name'>{artist ? artist : 'Unknown'}</h3>
       {isHovering & !expanded ? (
         <span className='expand-btn' onClick={handleClickExpanded}>
           &or;
@@ -81,6 +81,7 @@ const Card = props => {
             position: relative;
             cursor: default;
             font-size: 1.5rem;
+            transition: all 0.5s;
           }
           .card:hover {
             border-color: #067df7;

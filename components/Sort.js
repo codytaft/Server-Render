@@ -25,6 +25,9 @@ class Sort extends Component {
   // Sorts the array
   handleSort() {
     const { artists, onChange } = this.props;
+
+    // Maps over the passed down filtered artists
+    // Returns object with Index and artist First or Last name
     let mapped = artists.map((artist, i) => {
       return {
         index: i,
@@ -36,14 +39,17 @@ class Sort extends Component {
       };
     });
 
+    // If A->Z selected invoke ascendingSort function
     if (this.state.order === 'ascending') {
       mapped = this.ascendingSort(mapped);
     }
 
+    // If Z->A selected invoke ascendingSort function
     if (this.state.order === 'descending') {
       mapped = this.descendingSort(mapped);
     }
 
+    // Map over result returning the elements in the new order
     let result = mapped.map(el => {
       return artists[el.index];
     });
