@@ -92,7 +92,7 @@ class Sort extends Component {
               type='radio'
               name='name'
               value='first'
-              className='name-btn'
+              className='name-btn first-name'
               onChange={this.handleSortSelection}
               checked={this.state.name === 'first'}
             />
@@ -101,7 +101,7 @@ class Sort extends Component {
               type='radio'
               name='name'
               value='last'
-              className='name-btn'
+              className='name-btn last-name'
               onChange={this.handleSortSelection}
               checked={this.state.name === 'last'}
             />
